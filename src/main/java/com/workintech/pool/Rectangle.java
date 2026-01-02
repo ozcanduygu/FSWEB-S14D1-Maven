@@ -3,9 +3,13 @@ package com.workintech.pool;
 import java.util.Locale;
 
 public class Rectangle {
-
     private double width;
     private double length;
+
+    // STATİK BLOK: Sınıf ilk çalıştığında tüm projenin dilini Türkçe yapar.
+    static {
+        Locale.setDefault(new Locale("tr", "TR"));
+    }
 
     public Rectangle(double width, double length) {
         this.width = width < 0 ? 0 : width;
@@ -21,14 +25,6 @@ public class Rectangle {
     }
 
     public double getArea() {
-        // Eğer test sadece double bekliyorsa bu hesaplama doğru.
         return width * length;
-    }
-
-    // TEST SİSTEMİ ÇIKTIYI YAZI OLARAK KONTROL EDİYORSA HATAYI BURASI ÇÖZER
-    @Override
-    public String toString() {
-        // Israrla virgüllü format döndürmesini sağlıyoruz
-        return String.format(new Locale("tr", "TR"), "%.2f", getArea());
     }
 }
